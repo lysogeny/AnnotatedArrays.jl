@@ -1,16 +1,20 @@
 using AnnotatedArrays
+using DataFrames
 
 using Test
 
 testsets = [
+    "constructors.jl",
+    "getindex.jl",
+    "setindex.jl",
 ]
 
 for testset in testsets
     try
         include(testset)
-        printl("PASSED: $testset")
+        println("PASSED: $testset")
     catch e
-        printl("FAILED: $testset")
+        println("FAILED: $testset")
         rethrow(e)
     end
 end
