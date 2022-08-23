@@ -1,0 +1,4 @@
+name = "AnnotatedArrays"
+uuid = "7d9a15e7-6e60-4ce7-a6b5-f33344f7fba8"
+authors = ["Jooa <j.hooli@dkfz.de>"]
+version = "0.1.0"
