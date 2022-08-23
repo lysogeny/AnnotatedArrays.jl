@@ -43,6 +43,12 @@ end
     @test typeof(A[:,:]) <: typeof(A)
 end
 
+@testset "Test dimension preserving boolean getindex" begin
+    # Should keep type
+    # [1:2,[1]]
+    @test A[[true, true],[1]].arr == A.arr[1:2,[1]]
+end
+
 @testset "Test dimension reducing numerical getindex" begin
     # Should drop to AnnotatedVector (which is a really dumb type)
     @test typeof(A[1:2, 1]) <: AnnotatedVector

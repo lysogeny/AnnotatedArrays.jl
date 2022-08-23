@@ -17,6 +17,7 @@ end
 
 indices(ids::AbstractVector{String}, c::Colon) = c
 indices(ids::AbstractVector{String}, i::Int) = i
+indices(ids::AbstractVector{String}, b::Bool) = b
 indices(ids::AbstractVector{String}, i::String) = findfirst(map(x -> x == i, ids))
 indices(ids::AbstractVector{String}, i::AbstractVector) = map(x -> indices(ids, x), i)
 
@@ -29,7 +30,7 @@ keepingtype(x::Colon) = true
 
 # preserves dimensions
 # annotatedgetindex(A, [1], [1])
-function annotatedgetindex(A::S, index::Vararg{Union{AbstractVector{Int}, Colon, Int}, N}) where {T, N, S <: AnnotatedArray{T, N}}
+function annotatedgetindex(A::S, index::Vararg{Union{AbstractVector{Int}, AbstractVector{Bool}, Colon, Int}, N}) where {T, N, S <: AnnotatedArray{T, N}}
     arr = view(A.arr, index...)
 
     DN = length(index)
@@ -50,6 +51,6 @@ function Base.setindex!(A::AnnotatedArray{T, N}, x, I::Vararg{Int, N}) where {T,
 end
 
 function Base.setindex!(A::AnnotatedArray{T, N}, x, I::Vararg{Any, N}) where {T, N}
-    Base.setindex!(A.arr, x, map((id, i) -> indices(id, i), A.ids, I))
+    Base.setindex!(A.arr, x, map((id, i) -> indices(id, i), A.ids, I)...)
 end
 
