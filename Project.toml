@@ -2,3 +2,7 @@ name = "AnnotatedArrays"
 uuid = "7d9a15e7-6e60-4ce7-a6b5-f33344f7fba8"
 authors = ["Jooa <j.hooli@dkfz.de>"]
 version = "0.1.0"
+
+[deps]
+DataFrames = "a93c6f00-e57d-5684-b7b6-d8193f3e46c0"
+Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
