@@ -10,4 +10,13 @@ using DataFrames
     @test ncol.(A.dat) == (6, 6, 2)
 end
 
+@testset "Dialect determining" begin
+    @test AnnotatedArrays.determine_dialect("loom") == AnnotatedArrays.Loom
+    @test AnnotatedArrays.determine_dialect("") == AnnotatedArrays.UnknownHDF5Dialect
+    @test AnnotatedArrays.determine_dialect("blub") == AnnotatedArrays.UnknownHDF5Dialect
+    # Invalid errors
+    fid = h5open("small.loom", "r")
+    @test_throws AnnotatedArrays.UnknownDialectError AnnotatedArray(AnnotatedArrays.HDF5Dialect, fid)
+end
+
 
