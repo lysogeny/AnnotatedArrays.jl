@@ -7,7 +7,8 @@ import HDF5
 include("types.jl")
 include("interfaces.jl")
 include("io.jl")
+include("accessors.jl")
 
-export AnnotatedArray, AnnotatedMatrix, AnnotatedVector, indices
+export AnnotatedArray, AnnotatedMatrix, AnnotatedVector, indices, data, names
 
 end # module

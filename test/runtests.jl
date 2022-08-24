@@ -8,6 +8,7 @@ testsets = [
     "getindex.jl",
     "setindex.jl",
     "io.jl",
+    "accessors.jl",
 ] |> reverse
 
 for testset in testsets
